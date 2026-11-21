@@ -44,4 +44,12 @@ cat /tmp/meme-out/POST.json
 
 It prints the post address it handed in and exits non-zero with a clear
 message if `POST.json` is missing, malformed, or does not point at an X
-status URL.
+status URL. The address check is strict: https only, host `x.com` or
+`twitter.com`, and a path of exactly `/<handle>/status/<numeric id>`.
+
+To validate the entry without handing anything in, run it with
+`--check` — it prints the post address and writes nothing:
+
+```sh
+MAKEFUN_BOT_DIR=. node main.ts --check
+```
